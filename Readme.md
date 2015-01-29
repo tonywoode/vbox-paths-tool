@@ -15,11 +15,13 @@ Change your paths in vboxPath.cfg (doesn’t matter if you edit it on osx or win
 Windows
 =======
 Run MyVirtualBox.exe
+
 (its a compiled (with B2E) version of MyVirtualBox.bat, which does nothing but run the real code in v_box_paths_win.bat. That file reads the paths to box the vbox exe and the image repository from vboxPath.cfg. The recursive text replacement is done using FindAndReplaceText.exe)
 
 Mac
 ===
 Run MyVirtualBox.app
+
 (I used Platypus to make this app from platypus_thisDir_runner script (I tried symlinking the script but relative paths a problem), it points to runner which cds up the platypus tree three times (to get out of app/osx/resources and into the parent dir. Runner then calls the real script at vbox_paths_to_osx. Compile with Platypus options are No Ouptut, DON’T tick ‘development version’ (relative path problem), a png of virtual box ico, UNCHECK ‘remain running after initial execution’)
 
 ### Anything else to think about
