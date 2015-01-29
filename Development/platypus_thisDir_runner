@@ -1,0 +1,9 @@
+#! /bin/bash
+cd "${BASH_SOURCE%/*}" || exit
+echo `pwd`
+cd ..
+echo `pwd`
+cd ..
+echo `pwd`
+cd ..
+./vbox_paths_to_osx

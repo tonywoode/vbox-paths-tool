@@ -1,0 +1,38 @@
+/* CSS Document */
+#branding {/*Use 780px for no-trees version*/
+	/*width: 780px;*/
+}
+#wrapper {
+	background: url(skins/cream/final/images/header.png) no-repeat;
+}
+.attachment #wrapper, .page-template-onecolumn-page-php #wrapper, .tax-portfolio #wrapper, .tax-portfolio-tag #wrapper {
+	background: url(skins/cream/att/images/header-att2.png) no-repeat;
+}
+body {
+	background: url(skins/cream/final/images/wood_bg.jpg);
+}
+#main {
+	background: url(skins/cream/final/images/page.png);
+}
+.attachment #main, .page-template-onecolumn-page-php #main, .tax-portfolio #main, .tax-portfolio-tag #main {
+	background: url(skins/cream/att/images/page-att2.png);
+}
+#tree {
+	background: url(skins/cream/final/images/sidebar.png);
+}
+.attachment #tree, .page-template-onecolumn-page-php #tree, .tax-portfolio #tree, .tax-portfolio-tag #tree {
+	/*background: url(skins/cream/att/images/tree-att.png);*/
+	background-image:none;
+	z-index:-10;
+}
+#footer {
+	background: url(skins/cream/final/images/footer.png) no-repeat;
+}
+.attachment #footer, .page-template-onecolumn-page-php #footer, .tax-portfolio #footer, .tax-portfolio-tag #footer {
+	background: url(skins/cream/att/images/footer-att2.png) no-repeat;
+}
+#access ul ul {
+	background-color: #f2f3d8;
+	}
+
+

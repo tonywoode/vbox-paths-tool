@@ -1,0 +1,8 @@
+#!/bin/bash
+cd "${BASH_SOURCE%/*}" || exit
+
+echo `pwd`
+cd ..
+echo `pwd`
+cd ..
+echo `pwd`
