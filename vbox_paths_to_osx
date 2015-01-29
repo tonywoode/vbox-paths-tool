@@ -1,0 +1,28 @@
+#!/bin/bash
+. vboxPath.cfg
+
+# remove the windows line ending that's bound to be in the path in the config....
+path=$(echo "$vboxVMDirMac" | sed $'s/\r$//' )
+cd $path
+
+# make a copy of the .vbox files, suffix with osxbak. We won't use these, jsut if something goes wrong
+find . -name '*.vbox' -print0 | xargs -0 -I {} cp {} {}.osxbak
+
+#replace all P: to OSX equivalent in virtual box config files in this dir and subdirs
+find . -type f -name "*.vbox" -exec sed -i '' 's/P:\\/\/Volumes\/Untitled\/Emulators\//g' {} +
+
+#replace all F: to OSX equivalent in virtual box config files in this dir and subdirs
+find . -type f -name "*.vbox" -exec sed -i '' 's/F:\\/\/Volumes\/Untitled\/Games\//g' {} +
+
+#For VM's that mostly get loaded on windows, change the single C:/Program files ref for the 
+#Guest Additions Iso but NOT the 2 references to the guest additions folder on the GUEST
+#ie: we're stating windows is the 'primary' host for these images
+find . -type f -name "*.vbox" -exec sed -i '' 's/C:\\Program Files\\Oracle\\VirtualBox\\/\/Volumes\/Untitled\/Program Files\/Oracle\/VirtualBox\//g' {} +
+
+#for boot2docker assume osx is the host
+find . -type f -name "*.vbox" -exec sed -i '' 's/E:\\Users\\twoode\\.boot2docker\\/\/Users\/twoode\/.boot2docker\//g' {} +
+
+#ditto for ubuntu
+find . -type f -name "*.vbox" -exec sed -i '' 's/E:\\Applications\\VirtualBox.app\\Contents\\MacOS\\/\/Applications\/VirtualBox.app\/Contents\/MacOS\//g' {} +
+
+open $vboxAppDirMac
