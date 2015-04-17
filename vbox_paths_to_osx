@@ -1,6 +1,9 @@
 #!/bin/bash
 . vboxPath.cfg
 
+winDriveOnMac="Untitled"
+winPathOnMac="\/Volumes\/$winDriveOnMac"
+
 # remove the windows line ending that's bound to be in the path in the config....
 path=$(echo "$vboxVMDirMac" | sed $'s/\r$//' )
 cd $path
@@ -9,15 +12,16 @@ cd $path
 find . -name '*.vbox' -print0 | xargs -0 -I {} cp {} {}.osxbak
 
 #replace all P: to OSX equivalent in virtual box config files in this dir and subdirs
-find . -type f -name "*.vbox" -exec sed -i '' 's/P:\\/\/Volumes\/Untitled\/Emulators\//g' {} +
+find . -type f -name "*.vbox" -exec sed -i '' 's/P:\\/'"$winPathOnMac"'\/Emulators\//g' {} +
 
 #replace all F: to OSX equivalent in virtual box config files in this dir and subdirs
-find . -type f -name "*.vbox" -exec sed -i '' 's/F:\\/\/Volumes\/Untitled\/Games\//g' {} +
+find . -type f -name "*.vbox" -exec sed -i '' 's/F:\\/'"$winPathOnMac"'\/Games\//g' {} +
 
 #For VM's that mostly get loaded on windows, change the single C:/Program files ref for the 
 #Guest Additions Iso but NOT the 2 references to the guest additions folder on the GUEST
 #ie: we're stating windows is the 'primary' host for these images
-find . -type f -name "*.vbox" -exec sed -i '' 's/C:\\Program Files\\Oracle\\VirtualBox\\/\/Volumes\/Untitled\/Program Files\/Oracle\/VirtualBox\//g' {} +
+# (To use BASH variables in BSD SED we must use the '""' syntax)
+find . -type f -name "*.vbox" -exec sed -i '' 's/C:\\Program Files\\Oracle\\VirtualBox\\/'"$winPathOnMac"'\/Program Files\/Oracle\/VirtualBox\//g' {} +
 
 #for boot2docker assume osx is the host
 find . -type f -name "*.vbox" -exec sed -i '' 's/E:\\Users\\twoode\\.boot2docker\\/\/Users\/twoode\/.boot2docker\//g' {} +
@@ -25,4 +29,4 @@ find . -type f -name "*.vbox" -exec sed -i '' 's/E:\\Users\\twoode\\.boot2docker
 #ditto for ubuntu
 find . -type f -name "*.vbox" -exec sed -i '' 's/E:\\Applications\\VirtualBox.app\\Contents\\MacOS\\/\/Applications\/VirtualBox.app\/Contents\/MacOS\//g' {} +
 
-open $vboxAppDirMac
+open $vboxAppMac
