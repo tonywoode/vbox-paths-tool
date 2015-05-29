@@ -10,10 +10,10 @@ for /f "tokens=2* delims==" %%J in ('find "vboxAppWin=" ^<%config% ') do (set VM
 ::here's what the windows drive is called on my mac
 set WinDriveOnMac=/Volumes/Untitled
 
-cd %VMDir%
+cd /D %VMDir%
 for /r %%K in (*.vbox) do (copy %%K %%K.winbak)
 
-set FART=%SCRIPTDIR%\FART.exe
+set FART=%SCRIPTDIR%FART.exe
 :: Relace first this
 %FART% -r -- *.vbox "%WinDriveOnMac%/Emulators" "P:\\"
 
