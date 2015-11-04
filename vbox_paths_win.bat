@@ -8,7 +8,8 @@ for /f "tokens=2* delims==" %%J in ('find "vboxAppWin=" ^<%config% ') do (set VM
 
 ::now set our root paths
 ::here's what the windows drive is called on my mac
-set WinDriveOnMac=/Volumes/Untitled
+set VolumesOnMac=/Volumes
+set WinDriveOnMac=%VolumesOnMac%/Untitled
 
 cd /D %VMDir%
 for /r %%K in (*.vbox) do (copy %%K %%K.winbak)
@@ -18,7 +19,7 @@ set FART=%SCRIPTDIR%FART.exe
 %FART% -r -- *.vbox "%WinDriveOnMac%/Emulators" "P:\\"
 
 :: then this
-%FART% -r -- *.vbox "%WinDriveOnMac%/Games" "F:\\"
+%FART% -r -- *.vbox "%VolumesOnMac%/Games" "F:\\"
 
 :: now this (because of the backslash after emulators, we now have P:\/QUICKPLAY....)
 %FART% -r -- *.vbox "P:\/QUICKPLAY" "P:\QUICKPLAY"
