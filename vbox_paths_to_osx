@@ -16,7 +16,8 @@ find . -name '*.vbox' -print0 | xargs -0 -I {} cp {} {}.osxbak
 find . -type f -name "*.vbox" -exec sed -i '' 's/P:\\/'"$winPathOnMac"'\/Emulators\//g' {} +
 
 #replace all F: to OSX equivalent in virtual box config files in this dir and subdirs
-find . -type f -name "*.vbox" -exec sed -i '' 's/F:\\/'"$volumesOnMac"'\/Games\//g' {} +
+find . -type f -name "*.vbox" -exec sed -i '' 's/F:\\/'"$winPathOnMac"'\/Games\//g' {} +
+#this was pond....gone now     find . -type f -name "*.vbox" -exec sed -i '' 's/F:\\/'"$volumesOnMac"'\/Games\//g' {} +
 
 #For VM's that mostly get loaded on windows, change the single C:/Program files ref for the 
 #Guest Additions Iso but NOT the 2 references to the guest additions folder on the GUEST

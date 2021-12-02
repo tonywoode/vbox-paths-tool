@@ -19,7 +19,8 @@ set FART=%SCRIPTDIR%FART.exe
 %FART% -r -- *.vbox "%WinDriveOnMac%/Emulators" "P:\\"
 
 :: then this
-%FART% -r -- *.vbox "%VolumesOnMac%/Games" "F:\\"
+%FART% -r -- *.vbox "%WinDriveOnMac%/Games" "F:\\"
+:: this was pond.....no longer valid %FART% -r -- *.vbox "%VolumesOnMac%/Games" "F:\\"
 
 :: now this (because of the backslash after emulators, we now have P:\/QUICKPLAY....)
 %FART% -r -- *.vbox "P:\/QUICKPLAY" "P:\QUICKPLAY"
